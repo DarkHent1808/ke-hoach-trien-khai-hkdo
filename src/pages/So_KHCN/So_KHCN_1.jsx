@@ -1,5 +1,5 @@
 import React from "react";
-import RoleHeader from "../components/Header";
+import { RoleHeader } from "../../components/Header";
 
 const statCards = [
   {
@@ -83,7 +83,7 @@ export default function SoKHCNPage() {
           <ServerCloudArt />
         </section>
 
-        <a href="#dashboard" className="dashboard-cta">
+        <a href="/so-khcn/can-chuan-bi-gi" className="dashboard-cta">
           <PieIcon />
           <span>Xem dashboard</span>
           <ArrowRightIcon />
