@@ -1,5 +1,5 @@
 import React from "react";
-import { RoleHeader } from "../../components/Header";
+import Header from "../../components/Header";
 
 const checklistItems = [
   {
@@ -24,13 +24,16 @@ const checklistItems = [
   },
 ];
 
-export default function SoKHCNPreparePage() {
+export default function SoKHCNPreparePage({ embedded = false }) {
+  const rootClassName = embedded ? "sk-page-bg sk-page-bg--embedded" : "sk-page-bg";
+  const pageClassName = embedded ? "sk-page sk-page--embedded" : "sk-page";
+
   return (
-    <div className="sk-page-bg">
+    <section id="so-can-chuan-bi" className={rootClassName}>
       <style>{css}</style>
 
-      <main className="sk-page">
-        <RoleHeader activeKey="so-khcn" />
+      <main className={pageClassName}>
+        {!embedded && <Header activeKey="so-khcn" />}
 
         <section className="sk-hero">
           <div className="sk-hero-copy">
@@ -43,78 +46,78 @@ export default function SoKHCNPreparePage() {
           <HeroArtwork />
         </section>
 
-        <section className="checklist-section" aria-label="Danh sách việc cần chuẩn bị">
+        <section className="sk2-checklist-section" aria-label="Danh sách việc cần chuẩn bị">
           {checklistItems.map((item) => (
-            <article className="checklist-card" key={item.text}>
-              <div className="checklist-icon">{item.icon}</div>
+            <article className="sk2-checklist-card" key={item.text}>
+              <div className="sk2-checklist-icon">{item.icon}</div>
               <h2>{item.text}</h2>
-              <div className="check-mark"><CheckIcon /></div>
+              <div className="sk2-check-mark"><CheckIcon /></div>
             </article>
           ))}
         </section>
 
-        <a href="#checklist-dieu-phoi" className="outline-cta">
+        <a href="#checklist-dieu-phoi" className="sk2-outline-cta">
           <ClipboardIcon />
           <span>Xem checklist điều phối</span>
           <ArrowRightIcon />
         </a>
 
-        <a href="#dashboard" className="primary-cta">
+        <a href="#dashboard" className="sk2-primary-cta">
           <PieIcon />
           <span>Xem dashboard</span>
           <ArrowRightIcon />
         </a>
       </main>
-    </div>
+    </section>
   );
 }
 
 function HeroArtwork() {
   return (
-    <div className="hero-art" aria-hidden="true">
-      <div className="cloud cloud-a" />
-      <div className="cloud cloud-b" />
-      <div className="skyline skyline-a"><i /><i /><i /></div>
-      <div className="skyline skyline-b"><i /><i /><i /></div>
+    <div className="sk2-hero-art" aria-hidden="true">
+      <div className="sk2-cloud sk2-cloud-a" />
+      <div className="sk2-cloud sk2-cloud-b" />
+      <div className="sk2-skyline sk2-skyline-a"><i /><i /><i /></div>
+      <div className="sk2-skyline sk2-skyline-b"><i /><i /><i /></div>
       <GovBuilding />
-      <div className="table-map">
-        <div className="map-line line-1" />
-        <div className="map-line line-2" />
-        <div className="map-line line-3" />
-        <div className="map-pin"><LocationIcon /></div>
+      <div className="sk2-table-map">
+        <div className="sk2-map-line sk2-line-1" />
+        <div className="sk2-map-line sk2-line-2" />
+        <div className="sk2-map-line sk2-line-3" />
+        <div className="sk2-map-pin"><LocationIcon /></div>
       </div>
-      <div className="man-center">
-        <div className="hair" />
-        <div className="face" />
-        <div className="body" />
-        <div className="clipboard">
+      <div className="sk2-man-center">
+        <div className="sk2-hair" />
+        <div className="sk2-face" />
+        <div className="sk2-body" />
+        <div className="sk2-clipboard">
           <span /><span /><span />
         </div>
       </div>
-      <div className="man-right">
-        <div className="hair" />
-        <div className="face" />
-        <div className="glasses" />
-        <div className="body" />
-        <div className="laptop" />
+      <div className="sk2-man-right">
+        <div className="sk2-hair" />
+        <div className="sk2-face" />
+        <div className="sk2-glasses" />
+        <div className="sk2-body" />
+        <div className="sk2-laptop" />
       </div>
-      <div className="plant" />
+      <div className="sk2-plant" />
     </div>
   );
 }
 
 function GovBuilding() {
   return (
-    <div className="gov-building">
-      <div className="roof"><span>★</span></div>
-      <div className="body">
-        <div className="columns"><i /><i /><i /><i /></div>
-        <div className="windows">
+    <div className="sk2-gov-building">
+      <div className="sk2-roof"><span>★</span></div>
+      <div className="sk2-body">
+        <div className="sk2-columns"><i /><i /><i /><i /></div>
+        <div className="sk2-windows">
           {Array.from({ length: 8 }).map((_, index) => <b key={index} />)}
         </div>
-        <div className="door" />
+        <div className="sk2-door" />
       </div>
-      <div className="steps" />
+      <div className="sk2-steps" />
     </div>
   );
 }
@@ -269,85 +272,85 @@ svg { width: 1em; height: 1em; display: block; }
   font-weight: 500;
 }
 
-.hero-art {
+.sk2-hero-art {
   position: absolute;
   inset: 0;
   overflow: hidden;
 }
 
-.cloud,
-.cloud::before,
-.cloud::after {
+.sk2-cloud,
+.sk2-cloud::before,
+.sk2-cloud::after {
   position: absolute;
   border-radius: 999px;
   background: rgba(255,255,255,.95);
   content: "";
 }
 
-.cloud-a {
+.sk2-cloud-a {
   right: 84px;
   top: 78px;
   width: 85px;
   height: 16px;
 }
-.cloud-a::before {
+.sk2-cloud-a::before {
   width: 34px;
   height: 34px;
   left: 14px;
   top: -17px;
 }
-.cloud-a::after {
+.sk2-cloud-a::after {
   width: 43px;
   height: 43px;
   left: 41px;
   top: -26px;
 }
-.cloud-b {
+.sk2-cloud-b {
   left: 614px;
   top: 96px;
   width: 78px;
   height: 14px;
   opacity: .72;
 }
-.cloud-b::before {
+.sk2-cloud-b::before {
   width: 27px;
   height: 27px;
   left: 15px;
   top: -12px;
 }
-.cloud-b::after {
+.sk2-cloud-b::after {
   width: 38px;
   height: 38px;
   left: 38px;
   top: -22px;
 }
 
-.skyline {
+.sk2-skyline {
   position: absolute;
   display: flex;
   align-items: flex-end;
   gap: 12px;
   opacity: .6;
 }
-.skyline-a {
+.sk2-skyline-a {
   right: 99px;
   top: 139px;
 }
-.skyline-b {
+.sk2-skyline-b {
   left: 420px;
   top: 176px;
 }
-.skyline i {
+.sk2-skyline i {
   width: 38px;
   height: 103px;
   border-radius: 12px 12px 0 0;
   display: block;
   background: linear-gradient(180deg, rgba(85,154,219,.19), rgba(85,154,219,.05));
 }
-.skyline i:nth-child(2) { height: 137px; }
-.skyline i:nth-child(3) { height: 83px; }
+.sk2-skyline i:nth-child(2) { height: 137px; }
+.sk2-skyline i:nth-child(3) { height: 83px; }
 
-.gov-building {
+.sk2-gov-building {
   position: absolute;
   right: 36px;
   top: 149px;
@@ -356,7 +359,7 @@ svg { width: 1em; height: 1em; display: block; }
   filter: drop-shadow(0 13px 16px rgba(21, 97, 192, .15));
   opacity: .95;
 }
-.gov-building .roof {
+.sk2-gov-building .sk2-roof {
   position: absolute;
   left: 46px;
   top: 0;
@@ -369,7 +372,7 @@ svg { width: 1em; height: 1em; display: block; }
   justify-content: center;
   padding-top: 28px;
 }
-.gov-building .roof span {
+.sk2-gov-building .sk2-roof span {
   width: 43px;
   height: 43px;
   display: grid;
@@ -379,7 +382,7 @@ svg { width: 1em; height: 1em; display: block; }
   background: #ef3124;
   font-size: 21px;
 }
-.gov-building .body {
+.sk2-gov-building .sk2-body {
   position: absolute;
   left: 24px;
   top: 71px;
@@ -389,7 +392,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-top: 8px solid #2379d7;
   background: linear-gradient(180deg, #d6ebff, #74b8fb);
 }
-.gov-building .columns {
+.sk2-gov-building .sk2-columns {
   position: absolute;
   left: 50px;
   right: 50px;
@@ -398,24 +401,24 @@ svg { width: 1em; height: 1em; display: block; }
   grid-template-columns: repeat(4, 1fr);
   gap: 11px;
 }
-.gov-building .columns i {
+.sk2-gov-building .sk2-columns i {
   height: 96px;
   border-radius: 4px 4px 0 0;
   background: linear-gradient(90deg, #f2f9ff, #8cc5fb, #e8f5ff);
 }
-.gov-building .windows {
+.sk2-gov-building .sk2-windows {
   position: absolute;
   inset: 22px 14px 17px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 9px 24px;
 }
-.gov-building .windows b {
+.sk2-gov-building .sk2-windows b {
   height: 24px;
   border-radius: 3px;
   background: linear-gradient(180deg, #65b8ff, #126ed3);
 }
-.gov-building .door {
+.sk2-gov-building .sk2-door {
   position: absolute;
   left: 101px;
   bottom: 0;
@@ -424,7 +427,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 4px 4px 0 0;
   background: #064ea6;
 }
-.gov-building .steps {
+.sk2-gov-building .sk2-steps {
   position: absolute;
   left: 10px;
   right: 10px;
@@ -434,7 +437,7 @@ svg { width: 1em; height: 1em; display: block; }
   background: linear-gradient(180deg, #c7e4ff, #8cc8ff);
 }
 
-.table-map {
+.sk2-table-map {
   position: absolute;
   right: 162px;
   bottom: 6px;
@@ -445,21 +448,21 @@ svg { width: 1em; height: 1em; display: block; }
   background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(214,236,255,.72));
   border: 2px solid rgba(142, 192, 242, .35);
 }
-.table-map::before,
-.table-map::after,
-.map-line {
+.sk2-table-map::before,
+.sk2-table-map::after,
+.sk2-map-line {
   content: "";
   position: absolute;
   height: 3px;
   border-radius: 999px;
   background: rgba(93, 166, 232, .55);
 }
-.table-map::before { left: 16px; right: 23px; top: 33px; transform: rotate(13deg); }
-.table-map::after { left: 44px; right: 49px; bottom: 33px; transform: rotate(-17deg); }
-.map-line.line-1 { left: 33px; top: 16px; width: 83px; transform: rotate(-26deg); }
-.map-line.line-2 { left: 129px; top: 48px; width: 112px; transform: rotate(20deg); }
-.map-line.line-3 { left: 181px; top: 14px; width: 67px; transform: rotate(-13deg); }
-.map-pin {
+.sk2-table-map::before { left: 16px; right: 23px; top: 33px; transform: rotate(13deg); }
+.sk2-table-map::after { left: 44px; right: 49px; bottom: 33px; transform: rotate(-17deg); }
+.sk2-map-line.line-1 { left: 33px; top: 16px; width: 83px; transform: rotate(-26deg); }
+.sk2-map-line.line-2 { left: 129px; top: 48px; width: 112px; transform: rotate(20deg); }
+.sk2-map-line.line-3 { left: 181px; top: 14px; width: 67px; transform: rotate(-13deg); }
+.sk2-map-pin {
   position: absolute;
   left: 164px;
   top: 8px;
@@ -468,7 +471,7 @@ svg { width: 1em; height: 1em; display: block; }
   transform: skewX(16deg);
 }
 
-.woman {
+.sk2-woman {
   position: absolute;
   right: 419px;
   bottom: 12px;
@@ -476,7 +479,7 @@ svg { width: 1em; height: 1em; display: block; }
   height: 264px;
   z-index: 4;
 }
-.woman .hair {
+.sk2-woman .sk2-hair {
   position: absolute;
   left: 39px;
   top: 10px;
@@ -485,7 +488,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 54px 54px 35px 35px;
   background: #061746;
 }
-.woman .face {
+.sk2-woman .sk2-face {
   position: absolute;
   left: 75px;
   top: 45px;
@@ -494,7 +497,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 45%;
   background: #ffbd8c;
 }
-.woman .body {
+.sk2-woman .sk2-body {
   position: absolute;
   left: 39px;
   top: 110px;
@@ -503,7 +506,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 42px 42px 0 0;
   background: linear-gradient(160deg, #1685ef, #0752bb);
 }
-.woman .paper {
+.sk2-woman .sk2-paper {
   position: absolute;
   left: 64px;
   bottom: 17px;
@@ -515,7 +518,7 @@ svg { width: 1em; height: 1em; display: block; }
   border: 3px solid #9fcdf6;
 }
 
-.man-center {
+.sk2-man-center {
   position: absolute;
   right: 261px;
   bottom: 5px;
@@ -523,7 +526,7 @@ svg { width: 1em; height: 1em; display: block; }
   height: 315px;
   z-index: 5;
 }
-.man-center .hair {
+.sk2-man-center .sk2-hair {
   position: absolute;
   left: 74px;
   top: 2px;
@@ -532,7 +535,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 42px 42px 18px 18px;
   background: #07143c;
 }
-.man-center .face {
+.sk2-man-center .sk2-face {
   position: absolute;
   left: 84px;
   top: 43px;
@@ -541,7 +544,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 45%;
   background: #ffbd8c;
 }
-.man-center .body {
+.sk2-man-center .sk2-body {
   position: absolute;
   left: 53px;
   top: 105px;
@@ -550,7 +553,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 38px 38px 0 0;
   background: linear-gradient(160deg, #102b63, #061541);
 }
-.man-center .clipboard {
+.sk2-man-center .sk2-clipboard {
   position: absolute;
   left: 33px;
   top: 95px;
@@ -562,7 +565,7 @@ svg { width: 1em; height: 1em; display: block; }
   border: 7px solid #145fbd;
   box-shadow: 0 10px 18px rgba(0,0,0,.15);
 }
-.man-center .clipboard span {
+.sk2-man-center .sk2-clipboard span {
   position: relative;
   display: block;
   height: 10px;
@@ -570,7 +573,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 999px;
   background: #9cc8f1;
 }
-.man-center .clipboard span::before {
+.sk2-man-center .sk2-clipboard span::before {
   content: "✓";
   position: absolute;
   left: -8px;
@@ -580,7 +583,7 @@ svg { width: 1em; height: 1em; display: block; }
   font-size: 19px;
 }
 
-.man-right {
+.sk2-man-right {
   position: absolute;
   right: 58px;
   bottom: 14px;
@@ -588,7 +591,7 @@ svg { width: 1em; height: 1em; display: block; }
   height: 252px;
   z-index: 4;
 }
-.man-right .hair {
+.sk2-man-right .sk2-hair {
   position: absolute;
   left: 56px;
   top: 8px;
@@ -597,7 +600,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 45px 45px 17px 17px;
   background: #07143c;
 }
-.man-right .face {
+.sk2-man-right .sk2-face {
   position: absolute;
   left: 67px;
   top: 45px;
@@ -606,7 +609,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 45%;
   background: #ffbd8c;
 }
-.man-right .glasses {
+.sk2-man-right .sk2-glasses {
   position: absolute;
   left: 62px;
   top: 68px;
@@ -615,7 +618,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-top: 3px solid #101a4e;
   z-index: 2;
 }
-.man-right .body {
+.sk2-man-right .sk2-body {
   position: absolute;
   left: 39px;
   top: 109px;
@@ -624,7 +627,7 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 36px 36px 0 0;
   background: linear-gradient(180deg, #8bc3ff, #4a91ec);
 }
-.man-right .laptop {
+.sk2-man-right .sk2-laptop {
   position: absolute;
   left: 0;
   bottom: 3px;
@@ -634,7 +637,7 @@ svg { width: 1em; height: 1em; display: block; }
   transform: rotate(6deg);
   background: linear-gradient(135deg, #6f8fb4, #263f67);
 }
-.plant {
+.sk2-plant {
   position: absolute;
   right: 15px;
   bottom: 27px;
@@ -644,8 +647,8 @@ svg { width: 1em; height: 1em; display: block; }
   background: linear-gradient(180deg, #83d88b, #37a866);
   z-index: 3;
 }
-.plant::before,
-.plant::after {
+.sk2-plant::before,
+.sk2-plant::after {
   content: "";
   position: absolute;
   bottom: 2px;
@@ -654,17 +657,17 @@ svg { width: 1em; height: 1em; display: block; }
   border-radius: 30px 30px 0 0;
   background: #61c879;
 }
-.plant::before { left: -23px; transform: rotate(-31deg); }
-.plant::after { right: -20px; transform: rotate(30deg); }
+.sk2-plant::before { left: -23px; transform: rotate(-31deg); }
+.sk2-plant::after { right: -20px; transform: rotate(30deg); }
 
-.checklist-section {
+.sk2-checklist-section {
   position: relative;
   z-index: 8;
   padding: 0 27px;
   display: grid;
   gap: 15px;
 }
-.checklist-card {
+.sk2-checklist-card {
   min-height: 126px;
   padding: 18px 40px 18px 24px;
   border-radius: 21px;
@@ -675,7 +678,7 @@ svg { width: 1em; height: 1em; display: block; }
   background: rgba(255,255,255,.97);
   box-shadow: 0 13px 27px rgba(31, 101, 178, .12);
 }
-.checklist-icon {
+.sk2-checklist-icon {
   width: 98px;
   height: 98px;
   border-radius: 21px;
@@ -685,7 +688,7 @@ svg { width: 1em; height: 1em; display: block; }
   background: #e8f4ff;
   font-size: 57px;
 }
-.checklist-card h2 {
+.sk2-checklist-card h2 {
   margin: 0;
   color: #111a63;
   font-size: 30px;
@@ -693,7 +696,7 @@ svg { width: 1em; height: 1em; display: block; }
   font-weight: 900;
   letter-spacing: -.45px;
 }
-.check-mark {
+.sk2-check-mark {
   width: 49px;
   height: 49px;
   border-radius: 50%;
@@ -706,7 +709,7 @@ svg { width: 1em; height: 1em; display: block; }
   box-shadow: 0 7px 13px rgba(0, 91, 211, .22);
 }
 
-.outline-cta {
+.sk2-outline-cta {
   width: 480px;
   height: 63px;
   margin: 21px auto 20px;
@@ -723,18 +726,18 @@ svg { width: 1em; height: 1em; display: block; }
   font-weight: 860;
   box-shadow: 0 8px 18px rgba(31, 101, 178, .09);
 }
-.outline-cta svg {
+.sk2-outline-cta svg {
   width: 34px;
   height: 34px;
 }
-.outline-cta span {
+.sk2-outline-cta span {
   text-align: center;
 }
-.outline-cta svg:last-child {
+.sk2-outline-cta svg:last-child {
   justify-self: end;
 }
 
-.primary-cta {
+.sk2-primary-cta {
   height: 91px;
   margin: 0 27px 26px;
   padding: 0 36px 0 29px;
@@ -747,24 +750,24 @@ svg { width: 1em; height: 1em; display: block; }
   box-shadow: 0 15px 27px rgba(0, 84, 199, .28);
   transition: transform .18s ease, filter .18s ease;
 }
-.primary-cta:hover,
-.outline-cta:hover {
+.sk2-primary-cta:hover,
+.sk2-outline-cta:hover {
   transform: translateY(-2px);
   filter: brightness(1.03);
 }
-.primary-cta svg:first-child {
+.sk2-primary-cta svg:first-child {
   width: 56px;
   height: 56px;
   opacity: .9;
 }
-.primary-cta span {
+.sk2-primary-cta span {
   text-align: center;
   font-size: 32px;
   line-height: 1;
   font-weight: 920;
   letter-spacing: -.8px;
 }
-.primary-cta svg:last-child {
+.sk2-primary-cta svg:last-child {
   width: 43px;
   height: 43px;
   justify-self: end;
@@ -787,33 +790,33 @@ svg { width: 1em; height: 1em; display: block; }
     max-width: 490px;
     font-size: 22px;
   }
-  .hero-art {
+  .sk2-hero-art {
     transform: scale(.82);
     transform-origin: center top;
     width: 116%;
     left: -8%;
     top: 100px;
   }
-  .checklist-section {
+  .sk2-checklist-section {
     padding: 0 18px;
   }
-  .checklist-card {
+  .sk2-checklist-card {
     grid-template-columns: 82px 1fr 45px;
     gap: 20px;
     padding: 16px 22px 16px 18px;
   }
-  .checklist-icon {
+  .sk2-checklist-icon {
     width: 82px;
     height: 82px;
     font-size: 48px;
   }
-  .checklist-card h2 {
+  .sk2-checklist-card h2 {
     font-size: 24px;
   }
-  .outline-cta {
+  .sk2-outline-cta {
     width: calc(100% - 60px);
   }
-  .primary-cta {
+  .sk2-primary-cta {
     margin-left: 18px;
     margin-right: 18px;
   }
@@ -829,50 +832,82 @@ svg { width: 1em; height: 1em; display: block; }
   .sk-hero-copy p {
     font-size: 18px;
   }
-  .hero-art {
+  .sk2-hero-art {
     transform: scale(.62);
     width: 150%;
     left: -25%;
     top: 118px;
   }
-  .checklist-card {
+  .sk2-checklist-card {
     min-height: 104px;
     grid-template-columns: 62px 1fr 38px;
     gap: 15px;
     border-radius: 18px;
   }
-  .checklist-icon {
+  .sk2-checklist-icon {
     width: 62px;
     height: 62px;
     border-radius: 16px;
     font-size: 37px;
   }
-  .checklist-card h2 {
+  .sk2-checklist-card h2 {
     font-size: 18px;
   }
-  .check-mark {
+  .sk2-check-mark {
     width: 38px;
     height: 38px;
     font-size: 24px;
   }
-  .outline-cta {
+  .sk2-outline-cta {
     width: calc(100% - 36px);
     height: 58px;
     grid-template-columns: 32px 1fr 30px;
     padding: 0 20px;
     font-size: 19px;
   }
-  .primary-cta {
+  .sk2-primary-cta {
     height: 78px;
     grid-template-columns: 48px 1fr 38px;
     padding: 0 22px;
   }
-  .primary-cta span {
+  .sk2-primary-cta span {
     font-size: 25px;
   }
-  .primary-cta svg:first-child {
+  .sk2-primary-cta svg:first-child {
     width: 46px;
     height: 46px;
   }
 }
+
+
+.sk-page-bg--embedded {
+  min-height: auto;
+  display: block;
+  background: transparent;
+}
+
+.sk-page--embedded {
+  width: 100%;
+  min-height: auto;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.sk-page--embedded .sk-hero {
+  margin-top: 10px;
+  padding-top: 70px;
+}
+
+.sk-page--embedded .sk2-checklist-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sk-page--embedded .sk2-primary-cta {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 `;

@@ -14,7 +14,7 @@ const roles = [
     title: "SỞ KHCN",
     desc: "Điều phối chung và theo dõi kết quả",
     tone: "blue",
-    href: "/so-khcn/trang-dieu-phoi",
+    href: "/so-khcn",
   },
   {
     icon: "🏫",

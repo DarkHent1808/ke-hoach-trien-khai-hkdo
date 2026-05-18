@@ -1,5 +1,12 @@
 import React from "react";
-import { RoleHeader } from "../../components/Header";
+import Header from "../../components/Header";
+import SoKHCNPreparePage from "./So_KHCN_2";
+import SoKHCNMonitorPage from "./So_KHCN_3";
+import SoKHCNResultPage from "./So_KHCN_4";
+import SoKHCNFAQPage from "./So_KHCN_5";
+import SoKHCNReadyPage from "./So_KHCN_6";
+
+const tabs = ["Sở KHCN", "UBND xã/phường", "Tổ CNSCĐ", "Hộ kinh doanh", "EFFECT", "Người tìm mua"];
 
 const statCards = [
   {
@@ -38,7 +45,7 @@ export default function SoKHCNPage() {
 
       <main className="phone-page">
         <div className="header-bleed">
-          <RoleHeader activeKey="so-khcn" />
+          <Header activeKey="so-khcn" />
         </div>
 
         <section className="hero-section">
@@ -83,16 +90,32 @@ export default function SoKHCNPage() {
           <ServerCloudArt />
         </section>
 
-        <a href="/so-khcn/can-chuan-bi-gi" className="dashboard-cta">
+        <a href="#so-can-chuan-bi" className="dashboard-cta">
           <PieIcon />
           <span>Xem dashboard</span>
           <ArrowRightIcon />
         </a>
+
+        <SoKHCNPreparePage embedded />
+        <SoKHCNMonitorPage embedded />
+        <SoKHCNResultPage embedded />
+        <SoKHCNFAQPage embedded />
+        <SoKHCNReadyPage embedded />
+
       </main>
     </div>
   );
 }
 
+function slug(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 function HeroIllustration() {
   return (
@@ -257,7 +280,7 @@ svg { width: 1em; height: 1em; display: block; }
 .phone-page {
   width: min(100%, 928px);
   min-height: 100vh;
-  padding: 0 27px 27px;
+  padding: 28px 27px 27px;
   border-radius: 0 0 28px 28px;
   background:
     radial-gradient(circle at 84% 4%, rgba(255,255,255,.9) 0 14%, rgba(255,255,255,0) 34%),
@@ -267,9 +290,8 @@ svg { width: 1em; height: 1em; display: block; }
 }
 
 .header-bleed {
-  margin: 0 -27px 47px;
+  margin: -28px -27px 47px;
 }
-
 
 .header {
   display: flex;
@@ -684,7 +706,7 @@ svg { width: 1em; height: 1em; display: block; }
 }
 .map-widget ul {
   position: absolute;
-  margin: -73px 0 0 208px;
+  margin: -103px 0 0 208px;
   padding: 0;
   list-style: none;
   color: #14205e;
@@ -1186,8 +1208,8 @@ svg { width: 1em; height: 1em; display: block; }
 }
 
 @media (max-width: 820px) {
-  .phone-page { padding: 0 16px 24px; border-radius: 0; }
-  .header-bleed { margin: 0 -16px 30px; }
+  .phone-page { padding: 20px 16px 24px; border-radius: 0; }
+  .header-bleed { margin: -20px -16px 30px; }
   .tabs { margin-bottom: 30px; }
   .hero-section { min-height: 760px; margin: 0 -16px; padding: 0 16px; }
   .hero-copy { width: 100%; padding-left: 0; }
@@ -1201,6 +1223,7 @@ svg { width: 1em; height: 1em; display: block; }
 }
 
 @media (max-width: 540px) {
+  .header-bleed { margin-bottom: 24px; }
   .brand-mark { width: 54px; height: 54px; font-size: 48px; }
   .brand { gap: 11px; }
   .brand h1 { font-size: 25px; }
@@ -1219,4 +1242,5 @@ svg { width: 1em; height: 1em; display: block; }
   .dashboard-cta { grid-template-columns: 46px 1fr 40px; padding: 0 18px; }
   .dashboard-cta span { font-size: 23px; }
 }
+  
 `;
