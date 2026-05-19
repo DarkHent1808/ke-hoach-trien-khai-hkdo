@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const defaultItems = [
   { key: "so-khcn", label: "Sở KHCN", href: "/so-khcn" },
-  { key: "ubnd", label: "UBND\nxã/phường", href: "/ubnd" },
+  { key: "ubnd", label: "UBND\nxã/phường", href: "/ubnd-xa-phuong" },
   { key: "to-cnscd", label: "Tổ\nCNSCĐ", href: "/to-cnscd" },
   { key: "ho-kinh-doanh", label: "Hộ kinh\ndoanh", href: "/ho-kinh-doanh" },
   { key: "effect", label: "EFFECT", href: "/effect" },
@@ -25,9 +26,9 @@ export default function RoleHeader({
     <header className="role-header">
       <style>{css}</style>
 
-      <a className="role-header__home" href={homeHref} aria-label="Về trang chủ">
+      <Link className="role-header__home" to={homeHref} aria-label="Về trang chủ">
         <HomeIcon />
-      </a>
+      </Link>
 
       <nav className="role-header__nav" aria-label="Điều hướng vai trò">
         {items.map((item, index) => {
@@ -35,13 +36,13 @@ export default function RoleHeader({
 
           return (
             <React.Fragment key={item.key}>
-              <a
-                href={item.href}
+              <Link
+                to={item.href}
                 className={`role-header__item${active ? " is-active" : ""}`}
                 onClick={(event) => handleClick(event, item)}
               >
                 <span>{item.label}</span>
-              </a>
+              </Link>
 
               {index < items.length - 1 && <i className="role-header__divider" aria-hidden="true" />}
             </React.Fragment>

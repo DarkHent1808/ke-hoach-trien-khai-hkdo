@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const steps = [
   { n: 1, icon: "📣", title: "Buổi ra quân / phát động", tone: "green" },
@@ -21,7 +22,7 @@ const roles = [
     title: "UBND XÃ/PHƯỜNG",
     desc: "Tổ chức địa bàn, huy động hộ kinh doanh",
     tone: "green",
-    href: "#ubnd",
+    href: "/ubnd-xa-phuong",
   },
   {
     icon: "👥",
@@ -169,15 +170,19 @@ export default function HKDOLandingPrototype() {
         <p className="section-lead">Mỗi bên có vai trò riêng. Chọn đúng vai trò để xem hướng dẫn phù hợp.</p>
 
         <div className="roles-grid">
-          {roles.map((role) => (
-            <a key={role.title} href={role.href} className={`role-card ${role.tone}`}>
-              <div className="role-icon">{role.icon}</div>
-              <h3>{role.title}</h3>
-              <p>{role.desc}</p>
-              <span className="round-arrow">›</span>
-            </a>
-          ))}
-        </div>
+        {roles.map((role) => (
+          <Link
+            key={role.title}
+            to={role.href}
+            className={`role-card ${role.tone}`}
+          >
+            <div className="role-icon">{role.icon}</div>
+            <h3>{role.title}</h3>
+            <p>{role.desc}</p>
+            <span className="round-arrow">›</span>
+          </Link>
+        ))}
+      </div>
       </section>
 
       <section className="card-section goals-section">
