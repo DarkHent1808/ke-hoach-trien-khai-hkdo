@@ -29,14 +29,14 @@ const roles = [
     title: "TỔ CNSCĐ",
     desc: "Hướng dẫn 10 phút và hỗ trợ tại chỗ",
     tone: "orange",
-    href: "#to-cnscd",
+    href: "/cnscd",
   },
   {
     icon: "🏪",
     title: "HỘ KINH DOANH",
     desc: "Tự mở cửa hàng, tự vận hành",
     tone: "purple",
-    href: "#ho-kinh-doanh",
+    href: "/ho-kinh-doanh",
   },
   {
     icon: "🧑‍💼",

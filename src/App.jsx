@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const HKDO_landing = lazy(() => import("./pages/HKDO_landing"));
 const SoKHCNPage = lazy(() => import("./pages/so_khcn/So_KHCN_1"));
 const UbndPage = lazy(() => import("./pages/ubnd-xa-phuong/Ubnd_1"));
+const CnscdPage = lazy(() => import("./pages/cnscd/Cnscd_1"));
+const HkdPage = lazy(() => import("./pages/hkd/Hkd_1"));
+const EffectPage = lazy(() => import("./pages/effect/Effect_1"));
+
 import ScrollToTop from "./components/ScrollToTop";
 
 
@@ -19,6 +23,10 @@ export default function App() {
         <Route path="/" element={<HKDO_landing />} />
         <Route path="/so-khcn" element={<SoKHCNPage />} />
         <Route path="/ubnd-xa-phuong" element={<UbndPage />} />
+        <Route path="/cnscd" element={<CnscdPage />} />
+        <Route path="/ho-kinh-doanh" element={<HkdPage />} />
+        <Route path="/effect" element={<EffectPage />} />
+        
       </Routes>
     </BrowserRouter>
   );

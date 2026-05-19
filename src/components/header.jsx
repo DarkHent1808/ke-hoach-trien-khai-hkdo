@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const defaultItems = [
   { key: "so-khcn", label: "Sở KHCN", href: "/so-khcn" },
   { key: "ubnd", label: "UBND\nxã/phường", href: "/ubnd-xa-phuong" },
-  { key: "to-cnscd", label: "Tổ\nCNSCĐ", href: "/to-cnscd" },
+  { key: "to-cnscd", label: "Tổ\nCNSCĐ", href: "/cnscd" },
   { key: "ho-kinh-doanh", label: "Hộ kinh\ndoanh", href: "/ho-kinh-doanh" },
   { key: "effect", label: "EFFECT", href: "/effect" },
   { key: "nguoi-tim-mua", label: "Người\ntìm mua", href: "/nguoi-tim-mua" },
