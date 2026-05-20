@@ -9,6 +9,7 @@ const UbndPage = lazy(() => import("./pages/ubnd-xa-phuong/Ubnd_1"));
 const CnscdPage = lazy(() => import("./pages/cnscd/Cnscd_1"));
 const HkdPage = lazy(() => import("./pages/hkd/Hkd_1"));
 const EffectPage = lazy(() => import("./pages/effect/Effect_1"));
+const NtmPage = lazy(()=> import("./pages/nguoi-tim-mua/Ntm_1"));
 
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -26,7 +27,7 @@ export default function App() {
         <Route path="/cnscd" element={<CnscdPage />} />
         <Route path="/ho-kinh-doanh" element={<HkdPage />} />
         <Route path="/effect" element={<EffectPage />} />
-        
+        <Route path="/nguoi-tim-mua" element={<NtmPage />} />
       </Routes>
     </BrowserRouter>
   );
